@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 
 Route::get('/', function () {
     return view('user.dashboard');
@@ -18,3 +19,6 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+// Route::get('admin/dashboard', [HomeController::class, 'index']);
+Route::get('admin/dashboard', [HomeController::class, 'index'])->middleware(['auth', 'admin']);
