@@ -60,5 +60,23 @@
                 >{{ __('Saved.') }}</p>
             @endif
         </div>
+        
+        <!-- Teks tambahan di atas mailto -->
+        <div class="mt-6">
+            <p class="text-md text-gray-800 ms-4">
+                {{ __('Do you have an event to announce on our website and want to become an admin? Submit your application to become an admin!') }}
+            </p>
+        </div>
+
+        <!-- Kolom baru untuk mailto -->
+        <div class="flex items-center gap-4 ms-4">
+            <x-input-label for="mailto" :value="__('Mailto')" />
+            <x-text-input id="mailto" name="mailto" type="text" class="mt-1 block w-full" :value="'eventz.pti@gmail.com'" readonly />
+            <button type="button" onclick="window.location.href='mailto:eventz.pti@gmail.com?subject=Application to Become Admin&body=Hello, this is '+document.getElementById('name').value+' with email '+document.getElementById('email').value+'. I would like to create an event and upgrade my account to admin so that I can publish an event. Below is a brief overview of the event I am planning to organize.%0D%0AEvent Name : %0D%0ABrief Event Description: %0D%0AContact Reference: %0D%0A%0D%0AAttached %0D%0AEvent Permit or Relevant Certificate: (available/not available)%0D%0A%0D%0Aregards,%0D%0A'+document.getElementById('name').value;" class="ml-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600 hover:text-gray-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8m-9 4v8m0-8L3 8m18 0l-9 6m0 0v8" />
+                </svg>
+            </button>
+        </div>
     </form>
 </section>
