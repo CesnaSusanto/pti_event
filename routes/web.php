@@ -8,6 +8,14 @@ Route::get('/', function () {
     return view('user.dashboard');
 });
 
+Route::get('/', function () {
+    return view('home');
+});
+
+Route::get('/detail1', function () {
+    return view('detail1');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
