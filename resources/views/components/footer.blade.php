@@ -2,7 +2,7 @@
   <div id="footer-info" class="w-full flex flex-col items-center gap-7">
     <div id="footer-image" class="max-w-[300px] flex items-center">
       <img
-        src="image/logo.png"
+        src="assets/images/logo.png"
         alt=""
         class="h-[150px] content-center"
       />
