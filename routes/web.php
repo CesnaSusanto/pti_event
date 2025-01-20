@@ -8,13 +8,19 @@ Route::get('/', function () {
     return view('user.dashboard');
 });
 
+Route::get('/', function () {
+    return view('home');
+});
+
+Route::get('/detail1', function () {
+    return view('detail1');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/', function () {
-    return view('user.home');
-});
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
