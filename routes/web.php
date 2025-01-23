@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\ArtistController;
 
 Route::get('/', function () {
     return view('user.dashboard');
@@ -34,7 +35,17 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     // Route untuk pencarian event
     Route::get('admin/events/search', [EventController::class, 'search'])->name('events.search');
+
+    // Route untuk Artis CRUD
+    Route::get('admin/artists', [ArtistController::class, 'index'])->name('artists.index');
+    Route::get('admin/artists/create', [ArtistController::class, 'create'])->name('artists.create');
+    Route::post('admin/artists', [ArtistController::class, 'store'])->name('artists.store');
+    Route::get('admin/artists/{artist}', [ArtistController::class, 'show'])->name('artists.show');
+    Route::get('admin/artists/{artist}/edit', [ArtistController::class, 'edit'])->name('artists.edit');
+    Route::put('admin/artists/{artist}', [ArtistController::class, 'update'])->name('artists.update');
+    Route::delete('admin/artists/{artist}', [ArtistController::class, 'destroy'])->name('artists.destroy');
+
+    // Route untuk pencarian artis
+    Route::get('admin/artists/search', [ArtistController::class, 'search'])->name('artists.search');
 });
-
-
 require __DIR__.'/auth.php';
