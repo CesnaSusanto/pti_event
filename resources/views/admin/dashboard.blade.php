@@ -10,6 +10,17 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     {{ __("You're logged in! as admin") }}
+                    <div class="mt-4">
+                        <a href="{{ route('events.index') }}" class="btn btn-primary">
+                            Go to Event List
+                        </a>
+                        <br>
+                        <br>
+                        <br>
+                        <a href="{{ route('artists.index') }}" class="btn btn-primary">
+                            Go to Artis List
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
