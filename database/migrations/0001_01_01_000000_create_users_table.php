@@ -18,8 +18,10 @@ return new class extends Migration
             $table->string('usertype')->default('user');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('profile_photo')->nullable();
             $table->rememberToken();
             $table->timestamps();
+            
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
@@ -46,5 +48,8 @@ return new class extends Migration
         Schema::dropIfExists('users');
         Schema::dropIfExists('password_reset_tokens');
         Schema::dropIfExists('sessions');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('profile_photo');
+        });
     }
 };
