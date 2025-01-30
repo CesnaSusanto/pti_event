@@ -1,15 +1,19 @@
 <div id="card" class="flex flex-col w-full bg-[#27292a] p-4 pb-6 gap-5 rounded-xl">
-    <img src="assets/images/banner.jpeg" alt="" class=" w-full h-[200px] object-cover rounded-lg">
+    <img src="{{$image}}" alt="" class=" w-full h-[200px] object-cover rounded-lg">
     <div class="flex flex-col gap-4">
-        <h1 class="line-clamp-2 font-medium capitalize text-white h-12">Lorem ipsum dolor sit amet consectetur adipisicing elit. At iure aspernatur cum autem alias voluptatibus eligendi non fugiat distinctio nobis sint, accusamus est consequuntur, temporibus quos sequi facilis. Quo, corrupti.</h1>
-        <span class="text-sm line-clamp-4 h-20 text-[#c0c0c0]">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cum beatae minima enim id non, recusandae repellat quasi asperiores explicabo accusantium similique a delectus, veritatis sint est, quam iure officiis magni.</span>
+        <h1 class="line-clamp-2 font-medium capitalize text-white h-12">
+            {{$title}}
+        </h1>
+        <span class="text-sm line-clamp-4 h-20 text-[#c0c0c0]">
+            {{$description}}
+        </span>
         <div class="flex flex-row justify-between text-sm text-[#9e9e9e]">
             <div class="flex flex-row gap-2 capitalize">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="#ec6090">
                 <path d="M9 1V3H15V1H17V3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3H7V1H9ZM20 11H4V19H20V11ZM8 13V15H6V13H8ZM13 13V15H11V13H13ZM18 13V15H16V13H18ZM7 5H4V9H20V5H17V7H15V5H9V7H7V5Z">
                 </path>
             </svg>
-                date
+                {{$date}}
             </div>
             <div class="flex flex-row gap-2 capitalize">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="#ec6090">
@@ -17,7 +21,7 @@
 
                 </path>
             </svg>
-                location
+                {{$location}}
             </div>
         </div>
     </div>
