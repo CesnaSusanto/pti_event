@@ -1,11 +1,14 @@
 <!doctype html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Eventz</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-</head>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Eventz</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    </head>
+    
 <body>
     <div class="bg-primary py-3">
         <h3 class="text-white text-center">silakan tambahkan data event</h3>
@@ -25,29 +28,30 @@
                     <form enctype="multipart/form-data" action="{{ route('events.store') }}" method="post">
                         @csrf
                         <div class="card-body">
+                            <!-- Elemen form lainnya -->
                             <div class="mb-3">
-                                <label for="" class="form-label h5">Nama Event</label>
+                                <label for="nama_event" class="form-label h5">Nama Event</label>
                                 <input value="{{ old('nama_event') }}" type="text" class="@error('nama_event') is-invalid @enderror form-control-lg form-control" placeholder="Nama Event" name="nama_event">
                                 @error('nama_event')
                                 <p class="invalid-feedback">{{ $message }}</p>
                                 @enderror
                             </div>
                             <div class="mb-3">
-                                <label for="" class="form-label h5">Alamat</label>
+                                <label for="alamat" class="form-label h5">Alamat</label>
                                 <input value="{{ old('alamat') }}" type="text" class="@error('alamat') is-invalid @enderror form-control-lg form-control" placeholder="Alamat" name="alamat">
                                 @error('alamat')
                                 <p class="invalid-feedback">{{ $message }}</p>
                                 @enderror
                             </div>
                             <div class="mb-3">
-                                <label for="" class="form-label h5">Kota Event</label>
+                                <label for="kota_event" class="form-label h5">Kota Event</label>
                                 <input value="{{ old('kota_event') }}" type="text" class="@error('kota_event') is-invalid @enderror form-control form-control-lg" placeholder="Kota Event" name="kota_event">
                                 @error('kota_event')
                                 <p class="invalid-feedback">{{ $message }}</p>
                                 @enderror
                             </div>
                             <div class="mb-3">
-                                <label for="" class="form-label h5">Tanggal Event</label>
+                                <label for="tanggal_event" class="form-label h5">Tanggal Event</label>
                                 <input value="{{ old('tanggal_event') }}" type="date" class="@error('tanggal_event') is-invalid @enderror form-control form-control-lg" placeholder="Tanggal Event" name="tanggal_event">
                                 @error('tanggal_event')
                                 <p class="invalid-feedback">{{ $message }}</p>
@@ -61,49 +65,70 @@
                                 @enderror
                             </div>                            
                             <div class="mb-3">
-                                <label for="" class="form-label h5">Deskripsi Event</label>
+                                <label for="deskripsi_event" class="form-label h5">Deskripsi Event</label>
                                 <textarea placeholder="Deskripsi Event" class="form-control" name="deskripsi_event" cols="30" rows="5">{{ old('deskripsi_event') }}</textarea>
                             </div>
                             <div class="mb-3">
-                                <label for="" class="form-label h5">No HP</label>
+                                <label for="no_hp" class="form-label h5">No HP</label>
                                 <input value="{{ old('no_hp') }}" type="text" class="@error('no_hp') is-invalid @enderror form-control form-control-lg" placeholder="No HP" name="no_hp">
                                 @error('no_hp')
                                 <p class="invalid-feedback">{{ $message }}</p>
                                 @enderror
                             </div>
                             <div class="mb-3">
-                                <label for="" class="form-label h5">Event Status</label>
+                                <label for="event_status" class="form-label h5">Event Status</label>
                                 <select class="form-control form-control-lg" name="event_status">
                                     <option value="1" {{ old('event_status') == 1 ? 'selected' : '' }}>Active</option>
                                     <option value="0" {{ old('event_status') == 0 ? 'selected' : '' }}>Inactive</option>
                                 </select>
                             </div>
                             <div class="mb-3">
-                                <label for="" class="form-label h5">Foto Event</label>
+                                <label for="foto_event" class="form-label h5">Foto Event</label>
                                 <input type="file" class="form-control form-control-lg" name="foto_event">
                             </div>
-                            <div class="mb-3">
-                                <label for="longitude" class="form-label h5">Longitude</label>
-                                <input value="{{ old('longitude') }}" type="text" class="@error('longitude') is-invalid @enderror form-control-lg form-control" placeholder="Longitude" name="longitude">
-                                @error('longitude')
-                                <p class="invalid-feedback">{{ $message }}</p>
-                                @enderror
-                            </div>
-                            <div class="mb-3">
-                                <label for="latitude" class="form-label h5">Latitude</label>
-                                <input value="{{ old('latitude') }}" type="text" class="@error('latitude') is-invalid @enderror form-control-lg form-control" placeholder="Latitude" name="latitude">
-                                @error('latitude')
-                                <p class="invalid-feedback">{{ $message }}</p>
-                                @enderror
-                            </div>                            
+                            <div id="map" style="height: 400px;"></div>
+                            <input type="hidden" id="longitude" name="longitude">
+                            <input type="hidden" id="latitude" name="latitude">
                             <div class="d-grid">
                                 <button class="btn btn-lg btn-primary">Submit</button>
                             </div>
                         </div>
-                    </form>
+                    </form>                                    
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        var map = L.map('map').setView([-6.9033, 107.6423], 12);
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+    
+        // Variabel global untuk menyimpan posisi marker terakhir
+        let currentMarker = null;
+    
+        // Tambahkan fungsi klik untuk membuat marker
+        map.on('click', function(e) { 
+            // Dapatkan koordinat dari lokasi klik
+            const lat = e.latlng.lat; 
+            const lng = e.latlng.lng;
+    
+            // Hapus marker sebelumnya jika ada
+            if (currentMarker) {
+                map.removeLayer(currentMarker);
+            }
+    
+            // Tambahkan marker di lokasi yang diklik
+            currentMarker = L.marker([lat, lng]).addTo(map);
+    
+            // Tambahkan popup ke marker
+            currentMarker.bindPopup(`Koordinat: <br>Lat:${lat.toFixed(6)}<br>Lng: ${lng.toFixed(6)}`);
+    
+            // Simpan koordinat ke input hidden
+            document.getElementById('longitude').value = lng;
+            document.getElementById('latitude').value = lat;
+        });
+    </script>       
 </body>
 </html>

@@ -1,10 +1,10 @@
 <?php
-
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ArtistController;
+use App\Http\Controllers\ShowController;
 
 Route::get('/', function () {
     return view('user.dashboard');
@@ -22,7 +22,7 @@ Route::middleware(['auth'])->group(function () {
 
 // Route untuk admin
 Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('admin/dashboard', [HomeController::class, 'index'])->name('admin.dashboard');
+    Route::get('admin/dashboard', [ShowController::class, 'index'])->name('admin.dashboard');
 
     // Route untuk Event CRUD
     Route::get('admin/events', [EventController::class, 'index'])->name('events.index');

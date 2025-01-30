@@ -1,4 +1,3 @@
-<?php
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -21,4 +20,9 @@ class Event extends Model
         'longitude',
         'latitude',
     ];
+
+    public function artists()
+    {
+        return $this->belongsToMany(Artist::class, 'shows', 'id_event', 'id_artist');
+    }
 }

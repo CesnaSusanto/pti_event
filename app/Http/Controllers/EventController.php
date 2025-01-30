@@ -49,8 +49,8 @@ class EventController extends Controller
             'no_hp' => 'required|min:10',
             'event_status' => 'required|boolean',
             'foto_event' => 'required|image',
-            'longitude' => 'nullable|numeric',
-            'latitude' => 'nullable|numeric',
+            'longitude' => 'required|numeric',
+            'latitude' => 'required|numeric'
         ];
     
         $validator = Validator::make($request->all(), $rules);
@@ -88,7 +88,7 @@ class EventController extends Controller
         $event->save();
     
         return redirect()->route('events.index')->with('success', 'Event added successfully.');
-    }    
+    }        
 
     public function edit($id) {
         $event = Event::findOrFail($id);
