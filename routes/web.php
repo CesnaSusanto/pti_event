@@ -10,6 +10,10 @@ Route::get('/', function () {
     return view('user.dashboard');
 });
 
+route::get('/details', function () {
+    return view('user.EventDetails');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
