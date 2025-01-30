@@ -24,9 +24,9 @@
                                         profile
                                     </a>
 
-                                    @if (Route::has('register'))
+                                    @if (Route::has('login'))
                                         <a
-                                            href="{{ route('register') }}"
+                                            href="{{ route('login') }}"
                                             class=" px-5 py-2 border-2 border-[#ec6090]  text-[#ec6090]  rounded-full font-semibold flex flex-row justify-center items-center gap-2 hover:bg-[#ec6090] hover:text-white duration-200"
                                         >
                                         <span>login</span>
