@@ -10,7 +10,7 @@ Route::get('/', function () {
     return view('user.dashboard');
 });
 
-route::get('/details', function () {
+Route::get('/details', function () {
     return view('user.EventDetails');
 });
 
@@ -26,7 +26,7 @@ Route::middleware(['auth'])->group(function () {
 
 // Route untuk admin
 Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('admin/dashboard', [ShowController::class, 'index'])->name('admin.dashboard');
+    Route::get('/admin/dashboard', [HomeController::class, 'index'])->name('admin.dashboard');
 
     // Route untuk Event CRUD
     Route::get('admin/events', [EventController::class, 'index'])->name('events.index');
@@ -36,10 +36,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('admin/events/{event}/edit', [EventController::class, 'edit'])->name('events.edit');
     Route::put('admin/events/{event}', [EventController::class, 'update'])->name('events.update');
     Route::delete('admin/events/{event}', [EventController::class, 'destroy'])->name('events.destroy');
-
     // Route untuk pencarian event
     Route::get('admin/events/search', [EventController::class, 'search'])->name('events.search');
-
     // Route untuk Artis CRUD
     Route::get('admin/artists', [ArtistController::class, 'index'])->name('artists.index');
     Route::get('admin/artists/create', [ArtistController::class, 'create'])->name('artists.create');
@@ -48,8 +46,15 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('admin/artists/{artist}/edit', [ArtistController::class, 'edit'])->name('artists.edit');
     Route::put('admin/artists/{artist}', [ArtistController::class, 'update'])->name('artists.update');
     Route::delete('admin/artists/{artist}', [ArtistController::class, 'destroy'])->name('artists.destroy');
-
     // Route untuk pencarian artis
     Route::get('admin/artists/search', [ArtistController::class, 'search'])->name('artists.search');
+    // Route untuk Show CRUD
+    Route::get('admin/shows', [ShowController::class, 'index'])->name('shows.index');
+    Route::get('admin/shows/create', [ShowController::class, 'create'])->name('shows.create');
+    Route::post('admin/shows', [ShowController::class, 'store'])->name('shows.store');
+    Route::get('/admin/shows/{id_event}/edit', [ShowController::class, 'edit'])->name('shows.edit');
+    Route::put('/admin/shows/{id_event}', [ShowController::class, 'update'])->name('shows.update');
+    Route::delete('admin/shows/{id_event}', [ShowController::class, 'destroy'])->name('shows.destroy');
 });
+
 require __DIR__.'/auth.php';
