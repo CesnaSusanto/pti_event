@@ -15,14 +15,8 @@
                     </span>
                 </h1>
                 <div class="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-5 w-full ">
-                    <x-eventcard></x-eventcard>
-                    <x-eventcard></x-eventcard>
-                    <x-eventcard></x-eventcard>
-                    <x-eventcard></x-eventcard>
-                    <x-eventcard></x-eventcard>
-                    <x-eventcard></x-eventcard>
-                    <x-eventcard></x-eventcard>
-                    <x-eventcard></x-eventcard>
+                <x-eventcard image='assets/images/banner.jpeg' title="Judul Artikel" description="Deskripsi singkat artikel" date="24 Januari 2025" location="jakarta"/>
+
                 </div>
                 
             </div>

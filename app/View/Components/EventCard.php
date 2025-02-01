@@ -8,12 +8,19 @@ use Illuminate\View\Component;
 
 class EventCard extends Component
 {
-    /**
-     * Create a new component instance.
-     */
-    public function __construct()
+    public $title;
+    public $description;
+    public $date;
+    public $location;
+    public $image;
+
+    public function __construct($title, $description, $date, $location, $image)
     {
-        //
+        $this->image = $image;
+        $this->title = $title;
+        $this->description = $description;
+        $this->date = $date;
+        $this->location = $location;
     }
 
     /**
