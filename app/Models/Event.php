@@ -8,17 +8,19 @@ class Event extends Model
 {
     use HasFactory;
 
+    protected $table = 'events';
+
     protected $fillable = [
-        'nama_event',
-        'alamat',
-        'kota_event',
-        'tanggal_event',
-        'open_gate',
-        'deskripsi_event',
-        'no_hp',
-        'event_status',
         'foto_event',
-        'longitude',
-        'latitude',
+        'nama_event',
+        'deskripsi_event',
+        'tanggal_event',
+        'kota_event',
+        'open_gate'
+    ];
+
+    protected $dates = [
+        'tanggal_event' => 'datetime',
+        'open_gate' => 'datetime'
     ];
 }

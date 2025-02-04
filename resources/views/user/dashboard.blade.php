@@ -15,31 +15,32 @@
                     </span>
                 </h1>
                 <div class="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-5 w-full ">
-                    <x-eventcard></x-eventcard>
-                    <x-eventcard></x-eventcard>
-                    <x-eventcard></x-eventcard>
-                    <x-eventcard></x-eventcard>
-                    <x-eventcard></x-eventcard>
-                    <x-eventcard></x-eventcard>
-                    <x-eventcard></x-eventcard>
-                    <x-eventcard></x-eventcard>
+                    @if(isset($newestEvents) && count($newestEvents) > 0)
+                        @foreach($newestEvents as $event)
+                            <x-eventcard :event="$event"></x-eventcard>
+                        @endforeach
+                    @else
+                        <p class="text-white">No events found</p>
+                    @endif
                 </div>
-                
             </div>
             <div class="bg-[#1f2122] flex flex-col w-full rounded-2xl p-10 gap-5">
-                    <h1 class="text-white uppercase font-semibold text-3xl">
-                        Nearest 
-                        <span class="text-[#ec6090]">
-                            event
-                        </span>
-                    </h1>
-                    <div class="flex flex-col w-full ">
-                    <x-eventcardsecnd></x-eventcardsecnd>
-                    <x-eventcardsecnd></x-eventcardsecnd>
-                    <x-eventcardsecnd></x-eventcardsecnd>
-                    <x-eventcardsecnd></x-eventcardsecnd>
+                <h1 class="text-white uppercase font-semibold text-3xl">
+                    Nearest 
+                    <span class="text-[#ec6090]">
+                        event
+                    </span>
+                </h1>
+                <div class="flex flex-col w-full ">
+                    @if(isset($nearestEvents) && count($nearestEvents) > 0)
+                        @foreach($nearestEvents as $event)
+                            <x-eventcardsecnd :event="$event"></x-eventcardsecnd>
+                        @endforeach
+                    @else
+                        <p class="text-white">No nearest events found</p>
+                    @endif
                 </div>
-                </div>
+            </div>
         </div>
         <x-footer></x-footer>
     </x-guestlayout>
