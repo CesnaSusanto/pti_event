@@ -5,14 +5,15 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ArtistController;
+use App\Http\Controllers\DashboardController;
+use App\Models\Event;
 
-Route::get('/', function () {
-    return view('user.dashboard');
-});
+// Route::get('/', function () {
+//     return view('user.dashboard');
+// });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/admin', [DashboardController::class, 'index'])->name('admin.dashboard');
+Route::get('/', [DashboardController::class, 'index'])->name('user.dashboard');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
