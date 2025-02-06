@@ -1,7 +1,7 @@
 @props(['event'])
 
 <div id="card" class="flex flex-col w-full bg-[#27292a] p-4 pb-6 gap-5 rounded-xl">
-    <img src="{{ $event->foto_event }}" alt="{{ $event->nama_event }}" class="w-full h-[200px] object-cover rounded-lg">
+    <img src="{{ asset('uploads/events/' . $event->foto_event) }}" alt="{{ $event->nama_event }}" class="w-full h-[200px] object-cover rounded-lg">
     <div class="flex flex-col gap-4">
         <h1 class="line-clamp-2 font-medium capitalize text-white h-12">{{ $event->nama_event }}</h1>
         <span class="text-sm line-clamp-4 h-20 text-[#c0c0c0]">{{ $event->deskripsi_event }}</span>
