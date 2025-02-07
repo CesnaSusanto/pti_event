@@ -12,7 +12,13 @@ use App\Models\Event;
 //     return view('user.dashboard');
 // });
 
-<<<<<<< HEAD
+Route::get('/admin', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/', [DashboardController::class, 'index'])->name('user.dashboard');
+
+Route::get('/', function () {
+    return view('user.dashboard');
+});
+
 route::get('/details', function () {
     return view('user.EventDetails');
 });
@@ -20,10 +26,6 @@ route::get('/details', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
-=======
-Route::get('/admin', [DashboardController::class, 'index'])->name('admin.dashboard');
-Route::get('/', [DashboardController::class, 'index'])->name('user.dashboard');
->>>>>>> d587c7a7c894b1b839bb91fa5f0c9117a00a3826
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
