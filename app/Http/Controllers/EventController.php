@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 class EventController extends Controller
 {
     public function index() {
-        $events = Event::orderBy('created_at', 'DESC')->paginate(5);
+        $events = Event::orderBy('created_at', 'ASC')->paginate(5);
         return view('admin.events.list', [
             'events' => $events
         ]);
@@ -29,7 +29,7 @@ class EventController extends Controller
         }
 
         $events = DB::table('events')
-        ->orderBy('id', 'DESC')
+        ->orderBy('id', 'ASC')
         ->paginate(5);
         return view('admin.events.list', compact('events'));
     }
