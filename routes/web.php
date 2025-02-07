@@ -12,7 +12,7 @@ use App\Models\Event;
 //     return view('user.dashboard');
 // });
 
-Route::get('/admin', [DashboardController::class, 'index'])->name('admin.dashboard');
+Route::get('/admin', [DashboardController::class, 'index'])->name('dashboard');
 Route::get('/', [DashboardController::class, 'index'])->name('user.dashboard');
 
 Route::middleware(['auth'])->group(function () {
