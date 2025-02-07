@@ -9,6 +9,14 @@ use Illuminate\Support\Facades\DB;
 
 class EventController extends Controller
 {
+        public function show($id)
+    {
+        // Ambil event berdasarkan ID
+        $event = Event::findOrFail($id);
+
+        // Kirim data event ke tampilan eventdetails.blade.php
+        return view('user.EventDetails', compact('event'));
+    }
     public function index() {
         $events = Event::orderBy('created_at', 'ASC')->paginate(5);
         return view('admin.events.list', [
