@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Eventz</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
  
@@ -13,19 +14,25 @@
         <h3 class="text-white text-center">Semua data Event ada disini</h3>
     </div>
     <div class="container">
-        <div class="row justify-content-center mt-4">
-            <div class="col-md-10 d-flex justify-content-end">
-                <form method="GET" action="/events/search">
-                    <div class="input-group" style="margin-right:5px;">
-                        <div class="form-outline" data-mdb-input-init>
-                            <input class="form-control" name="search" placeholder="Search..." value="{{ request()->input('search') ? request()->input('search') : '' }}">
-                        </div>
-                        <button type="submit" class="btn btn-success">Search</button>
-                    </div>
-                </form>
-                <a href="{{ route('events.create') }}" class="btn btn-primary">Create</a>
-                <a href="{{ route('admin.dashboard') }}" class="btn btn-primary">go back</a>
-            </div>
+        <div class="flex justify-end items-center gap-4 mt-6">
+            <form method="GET" action="{{ route('events.search') }}" class="flex gap-2">
+                <input 
+                    type="text" 
+                    name="search" 
+                    placeholder="Search..." 
+                    value="{{ request()->input('search') ? request()->input('search') : '' }}"
+                    class="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                >
+                <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition">
+                    Search
+                </button>
+            </form>
+            <a href="{{ route('events.create') }}" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
+                Create
+            </a>
+            <a href="{{ route('admin.dashboard') }}" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
+                Go Back
+            </a>
         </div>
         <div class="row d-flex justify-content-center">
             @if (Session::has('success'))

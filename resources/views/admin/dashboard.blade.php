@@ -14,11 +14,13 @@
                         <a href="{{ route('events.index') }}" class="btn btn-primary">
                             Go to Event List
                         </a>
-                        <br>
-                        <br>
-                        <br>
+                        <br><br><br>
                         <a href="{{ route('artists.index') }}" class="btn btn-primary">
                             Go to Artis List
+                        </a>
+                        <br><br><br>
+                        <a href="{{ route('shows.index') }}" class="btn btn-primary">
+                            Go to Show List
                         </a>
                     </div>
                 </div>
