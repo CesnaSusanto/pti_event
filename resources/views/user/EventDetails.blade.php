@@ -122,7 +122,7 @@
                 const timeDifference = targetTime - now;
 
                 if (timeDifference <= 0) {
-                    countdownElement.innerHTML = "Sedang Berlangsung!";
+                    countdownElement.innerHTML = "Event Has Ended!";
                     return;
                 }
 
@@ -138,11 +138,12 @@
             setInterval(updateCountdown, 1000);
         }
 
-        // Ambil waktu dari Laravel
+        // Ambil waktu event dari Laravel dan ubah ke format JavaScript Date
         const eventDate = "{{ \Carbon\Carbon::parse($event->open_gate)->format('Y-m-d H:i:s') }}";
         startCountdown(eventDate);
     });
 </script>
+
 
 
   <script>
