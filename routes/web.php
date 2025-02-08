@@ -16,8 +16,14 @@ use App\Models\Event;
 Route::get('/admin', [DashboardController::class, 'index'])->name('admin.dashboard');
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('user.dashboard');
 
-Route::get('/event', [EventMenuController::class, 'index'])->name('user.MenuEvent');
 
+route::get('/details', function () {
+    return view('user.EventDetails');
+});
+
+Route::get('/event', function () {
+    return view('user.MenuEvent');
+});
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
