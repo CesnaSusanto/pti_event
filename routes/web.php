@@ -13,32 +13,24 @@ use App\Models\Event;
 // Route::get('/', function () {
 //     return view('user.dashboard');
 // });
-
-Route::get('/event/{id}', [EventController::class, 'show'])->name('event.details');
-
-Route::get('/admin', [DashboardController::class, 'index'])->name('admin.dashboard');
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('user.dashboard');
-
+Route::get('/event/{id}', [EventController::class, 'show'])->middleware(['auth', 'verified'])->name('event.details');
 
 route::get('/details', function () {
     return view('user.EventDetails');
 });
 
-Route::get('/event', function () {
-    return view('user.MenuEvent');
-});
 
-Route::get('/event', [EventMenuController::class, 'index'])->name('user.MenuEvent');
-// Route::get('/', function () {
-//     return view('user.dashboard');
-// });
+Route::get('/events', [EventController::class, 'showAllEvents'])->name('events.list');
 
+
+
+// Route::get('/admin', [DashboardController::class, 'index'])->name('dashboard');
 Route::get('/', [DashboardController::class, 'index'])->name('user.dashboard');
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

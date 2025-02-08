@@ -9,6 +9,22 @@ use Illuminate\Support\Facades\DB;
 
 class EventController extends Controller
 {
+    public function showAllEvents()
+{
+    $events = Event::where('event_status', 1) // Hanya menampilkan event aktif
+        ->orderBy('tanggal_event', 'ASC')
+        ->get();
+
+    return view('user.MenuEvent', compact('events'));
+}
+        public function show($id)
+    {
+        // Ambil event berdasarkan ID
+        $event = Event::findOrFail($id);
+
+        // Kirim data event ke tampilan eventdetails.blade.php
+        return view('user.EventDetails', compact('event'));
+    }
     public function index() {
         $events = Event::orderBy('created_at', 'DESC')->paginate(5);
         return view('admin.events.list', [

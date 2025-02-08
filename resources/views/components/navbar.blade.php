@@ -5,11 +5,11 @@
                 @if (Route::has('login'))
                                 @auth
                                     <a class="capitalize"
-                                        href="{{ url('/dashboard') }}">
+                                        href="{{ url('/') }}">
                                         home
                                     </a>
                                     <a
-                                        href="{{ url('/event') }}">
+                                        href="{{ url('/events') }}">
                                         event
                                     </a>
                                     <x-dropdown align="right" width="48">
@@ -45,12 +45,12 @@
                                 @else
                                     <a
                                         
-                                        href="{{ route('login') }}">
+                                        href="/">
                                         home
                                     </a>
 
                                     <a
-                                        href="{{ url('/dashboard') }}">
+                                        href="{{ url('/events') }}">
                                         event
                                     </a>
 

@@ -1,4 +1,3 @@
-<!-- we are able to turn zero into one -->
 <!-- Tambahkan Swiper.js CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
 
@@ -93,4 +92,8 @@
             });
         });
     </script>
+<<<<<<< HEAD
 </body>
+=======
+</body>
+>>>>>>> 877d0b4e3f0b75c99157f6b7ae6c25f4a7b29b2a
