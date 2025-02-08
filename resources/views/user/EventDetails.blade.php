@@ -14,9 +14,24 @@
       }
 
       /* Mengubah warna teks instruksi rute */
+      .leaflet-routing-container {
+        color: #000000 !important;
+      }
       .leaflet-routing-container .leaflet-routing-instructions {
-        color: #ff6347; /* Ganti dengan warna yang diinginkan */
-        font-size: 14px; /* Ukuran font teks rute */
+        color: #000000 !important;
+      }
+      /* Mengubah warna teks detail rute */
+      .leaflet-routing-alt {
+        color: #000000 !important;
+      }
+      .leaflet-routing-alt h2 {
+        color: #000000 !important;
+      }
+      .leaflet-routing-alt h3 {
+        color: #000000 !important;
+      }
+      .leaflet-routing-alt table {
+        color: #000000 !important;
       }
 
       /* Mengubah ukuran tabel deskripsi */

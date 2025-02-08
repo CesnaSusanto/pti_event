@@ -18,6 +18,10 @@ route::get('/details', function () {
 });
 
 
+Route::get('/events', [EventController::class, 'showAllEvents'])->name('events.list');
+
+
+
 Route::get('/admin', [DashboardController::class, 'index'])->name('dashboard');
 Route::get('/', [DashboardController::class, 'index'])->name('user.dashboard');
 
