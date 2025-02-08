@@ -9,6 +9,14 @@ use Illuminate\Support\Facades\DB;
 
 class EventController extends Controller
 {
+    public function showAllEvents()
+{
+    $events = Event::where('event_status', 1) // Hanya menampilkan event aktif
+        ->orderBy('tanggal_event', 'ASC')
+        ->get();
+
+    return view('user.MenuEvent', compact('events'));
+}
         public function show($id)
     {
         // Ambil event berdasarkan ID
@@ -17,11 +25,15 @@ class EventController extends Controller
         // Kirim data event ke tampilan eventdetails.blade.php
         return view('user.EventDetails', compact('event'));
     }
-    public function index() {
-        $events = Event::orderBy('created_at', 'ASC')->paginate(5);
-        return view('admin.events.list', [
-            'events' => $events
-        ]);
+    public function index(Request $request)
+    {
+        $search = $request->search;
+
+        $events = Event::when($search, function($query, $search) {
+            return $query->where('nama_artist', 'like', '%'.$search.'%');
+        })->paginate(10);
+
+        return view('admin.events.list', compact('events'));
     }
 
     public function search(Request $request)

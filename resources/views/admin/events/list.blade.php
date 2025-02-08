@@ -93,7 +93,7 @@
                     </div>
                 </form>
                 <a href="{{ route('events.create') }}" class="btn btn-custom">Create</a>
-                <a href="{{ route('admin.dashboard') }}" class="btn btn-custom ms-2">go back</a>
+                <a href="{{ route('dashboard') }}" class="btn btn-custom ms-2">go back</a>
             </div>
         </div>
         <div class="row d-flex justify-content-center">
@@ -155,6 +155,11 @@
                         <div class="mt-4">
                             {!! $events->withQueryString()->links('pagination::bootstrap-5') !!}
                         </div>
+                        @if(request('search'))
+                            <div class="mt-3">
+                                <a href="{{ route('events.index') }}" class="btn btn-custom btn-sm">Clear Search</a>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>

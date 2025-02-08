@@ -91,7 +91,7 @@
                     </div>
                 </form>
                 <a href="{{ route('artists.create') }}" class="btn btn-custom">Create</a>
-                <a href="{{ route('admin.dashboard') }}" class="btn btn-custom ms-2">go back</a>
+                <a href="{{ route('dashboard') }}" class="btn btn-custom ms-2">go back</a>
             </div>
         </div>
         <div class="row d-flex justify-content-center">
@@ -157,6 +157,7 @@
             </div>
         </div>
     </div>
+
     <script>
         function deleteArtist(id) {
             if (confirm("Are you sure you want to delete this artist?")) {
