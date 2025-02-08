@@ -14,13 +14,18 @@ class EventCard extends Component
     public $location;
     public $image;
 
-    public function __construct($title, $description, $date, $location, $image)
-    {
-        $this->image = $image;
-        $this->title = $title;
-        $this->description = $description;
-        $this->date = $date;
-        $this->location = $location;
+    public function __construct(
+        $title = null,
+        $description = null, 
+        $date = null,
+        $location = null,
+        $image = null
+    ) {
+        $this->title = $title ?? '';
+        $this->description = $description ?? '';
+        $this->date = $date ?? '';
+        $this->location = $location ?? '';
+        $this->image = $image ?? '';
     }
 
     /**

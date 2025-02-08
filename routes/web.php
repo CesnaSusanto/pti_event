@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ArtistController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EventMenuController;
 use App\Http\Controllers\ShowController;
 use App\Models\Event;
 
@@ -13,16 +14,27 @@ use App\Models\Event;
 //     return view('user.dashboard');
 // });
 
-Route::get('/admin', [DashboardController::class, 'index'])->name('dashboard');
-Route::get('/', [DashboardController::class, 'index'])->name('user.dashboard');
+Route::get('/event/{id}', [EventController::class, 'show'])->name('event.details');
 
-Route::get('/', function () {
-    return view('user.dashboard');
-});
+Route::get('/admin', [DashboardController::class, 'index'])->name('admin.dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('user.dashboard');
+
 
 route::get('/details', function () {
     return view('user.EventDetails');
 });
+
+Route::get('/event', function () {
+    return view('user.MenuEvent');
+});
+
+Route::get('/event', [EventMenuController::class, 'index'])->name('user.MenuEvent');
+// Route::get('/', function () {
+//     return view('user.dashboard');
+// });
+
+Route::get('/', [DashboardController::class, 'index'])->name('user.dashboard');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -36,14 +48,8 @@ Route::middleware(['auth'])->group(function () {
 
 
 // Route untuk admin
-Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('admin/dashboard', [HomeController::class, 'index'])->name('admin.dashboard');
-    
-
-    Route::get('admin/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('admin/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('admin/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
+    Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('admin/dashboard', [HomeController::class, 'index'])->name('dashboard');
 
     // Route untuk Event CRUD
     Route::get('admin/events', [EventController::class, 'index'])->name('events.index');

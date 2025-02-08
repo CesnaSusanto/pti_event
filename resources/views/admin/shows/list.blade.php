@@ -4,87 +4,169 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Shows</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #1f2122 !important;
+        }
+        .bg-header {
+            background-color: #27292a !important;
+            padding: 1rem 0;
+            margin-bottom: 2rem;
+        }
+        .card {
+            background-color: #27292a !important;
+            border: none !important;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .table {
+            margin-bottom: 0;
+            font-size: 0.9rem;
+        }
+        .table > :not(caption) > * > * {
+            background-color: #27292a !important;
+            color: white !important;
+            border-bottom-color: #323435 !important;
+            padding: 1rem 0.75rem;
+            vertical-align: middle;
+        }
+        .table thead th {
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+        }
+        .table tbody tr:hover {
+            background-color: #323435 !important;
+        }
+        .btn-custom {
+            background-color: #27292a !important;
+            border-color: #323435 !important;
+            color: white !important;
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+        .btn-custom:hover {
+            background-color: #323435 !important;
+            transform: translateY(-1px);
+        }
+        .btn-danger {
+            background-color: #dc3545 !important;
+            border: none;
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            border-radius: 6px;
+        }
+        .btn-danger:hover {
+            background-color: #bb2d3b !important;
+        }
+        .truncate-text {
+            max-width: 200px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: block;
+        }
+        .table-img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 6px;
+        }
+        .action-buttons {
+            display: flex;
+            gap: 0.5rem;
+        }
+    </style>
 </head>
-<body class="bg-gray-100">
-    <div class="bg-blue-600 py-4 text-center">
-        <h3 class="text-white text-lg font-semibold">Semua Data Show Ada di Sini</h3>
+<body>
+    <div class="bg-header">
+        <h3 class="text-white text-center mb-0">Manage Shows</h3>
     </div>
-    <div class="container mx-auto p-4">
-        <div class="flex justify-end space-x-2 mb-4">
-            <a href="{{ route('shows.create') }}" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">Tambah Show</a>
-            <a href="{{ route('admin.dashboard') }}" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">Go Back</a>
-        </div>
-        
-        @if (Session::has('success'))
-        <div class="bg-green-100 text-green-700 p-3 rounded mb-4">
-            {{ Session::get('success') }}
-        </div>
-        @endif
 
-        <div class="bg-white shadow-lg rounded-lg overflow-hidden">
-            <div class="bg-blue-600 p-4 text-white font-bold text-lg">Shows</div>
-            <div class="p-4 overflow-x-auto">
-                <table class="w-full border-collapse border border-gray-300">
-                    <thead>
-                        <tr class="bg-gray-200">
-                            <th class="border p-2">ID Event</th>
-                            <th class="border p-2">Foto Event</th>
-                            <th class="border p-2">Nama Event</th>
-                            <th class="border p-2">Hari & Tanggal Event</th>
-                            <th class="border p-2">Open Gate</th>
-                            <th class="border p-2">Kota Event</th>
-                            <th class="border p-2">Deskripsi</th>
-                            <th class="border p-2">Nama Artis</th>
-                            <th class="border p-2">Longitude</th>
-                            <th class="border p-2">Latitude</th>
-                            <th class="border p-2">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($shows as $show)
-                        <tr class="hover:bg-gray-100">
-                            <td class="border p-2 text-center">{{ $show->id_event }}</td>
-                            <td class="border p-2 text-center">
-                                <img src="{{ asset('uploads/events/'.$show->foto_event) }}" class="w-12 h-12 object-cover rounded">
-                            </td>
-                            <td class="border p-2">{{ $show->nama_event }}</td>
-                            <td class="border p-2">{{ $show->hari_tanggal_event }}</td>
-                            <td class="border p-2">{{ $show->open_gate }}</td>
-                            <td class="border p-2">{{ $show->kota_event }}</td>
-                            <td class="border p-2 w-40 max-w-xs truncate whitespace-nowrap overflow-hidden">
-                                {{ $show->deskripsi_event }}
-                            </td>
-                            <td class="border p-2">{{ $show->nama_artis }}</td>
-                            <td class="border p-2">{{ $show->longitude }}</td>
-                            <td class="border p-2">{{ $show->latitude }}</td>
-                            <td class="border p-2">
-                                <div class="flex justify-center items-center gap-2">
-                                    <a href="{{ route('shows.edit', [$show->id_event, $show->id_artists]) }}"
-                                       class="bg-blue-500 text-white text-sm px-3 py-1 rounded hover:bg-blue-700 transition duration-200 w-fit">
-                                        Edit
-                                    </a>
-                                    <button onclick="deleteShow({{ $show->id_event }});" 
-                                            class="bg-red-500 text-white text-sm px-3 py-1 rounded hover:bg-red-700 transition duration-200 w-fit">
-                                        Delete
-                                    </button>
-                                </div>
-                                <form id="delete-show-form-{{ $show->id_event }}" action="{{ route('shows.destroy', $show->id_event) }}" method="post" class="hidden">
-                                    @csrf
-                                    @method('delete')
-                                </form>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-                <div class="mt-4">
-                    {!! $shows->links('pagination::bootstrap-5') !!}
+    <div class="container">
+        <div class="d-flex justify-content-end mb-4">
+            <a href="{{ route('shows.create') }}" class="btn btn-custom">Tambah Show</a>
+            <a href="{{ route('dashboard') }}" class="btn btn-custom ms-2">Go Back</a>
+        </div>
+        <div class="row d-flex justify-content-center">
+            @if (Session::has('success'))
+            <div class="alert alert-success mb-4">
+                {{ Session::get('success') }}
+            </div>
+            @endif
+
+        <div class="card shadow-lg">
+            <div class="card-header py-3">
+                <h3 class="text-white mb-0 fs-5">Shows</h3>
+            </div>
+            <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Foto</th>
+                                    <th>Nama Event</th>
+                                    <th>Tanggal</th>
+                                    <th>Open Gate</th>
+                                    <th>Kota</th>
+                                    <th>Deskripsi</th>
+                                    <th>Artis</th>
+                                    <th>Location</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($shows as $show)
+                                <tr>
+                                    <td>{{ $show->id_event }}</td>
+                                    <td>
+                                        <img src="{{ asset('uploads/events/'.$show->foto_event) }}" 
+                                            class="table-img" alt="Event photo">
+                                    </td>
+                                    <td>{{ $show->nama_event }}</td>
+                                    <td>{{ $show->hari_tanggal_event }}</td>
+                                    <td>{{ $show->open_gate }}</td>
+                                    <td>{{ $show->kota_event }}</td>
+                                    <td>
+                                        <span class="truncate-text">{{ $show->deskripsi_event }}</span>
+                                    </td>
+                                    <td>{{ $show->nama_artis }}</td>
+                                    <td>
+                                        <div>Long: {{ $show->longitude }}</div>
+                                        <div>Lat: {{ $show->latitude }}</div>
+                                    </td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <a href="{{ route('shows.edit', [$show->id_event, $show->id_artists]) }}" 
+                                            class="btn btn-custom btn-sm">Edit</a>
+                                            <button onclick="deleteShow({{ $show->id_event }});" 
+                                                    class="btn btn-danger btn-sm">Delete</button>
+                                        </div>
+                                        <form id="delete-show-form-{{ $show->id_event }}" 
+                                            action="{{ route('shows.destroy', $show->id_event) }}" 
+                                            method="post" class="d-none">
+                                            @csrf
+                                            @method('delete')
+                                        </form>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="mt-4">
+                        {!! $shows->links('pagination::bootstrap-5') !!}
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    
+
     <script>
         function deleteShow(id_event) {
             if (confirm("Are you sure you want to delete this show?")) {
