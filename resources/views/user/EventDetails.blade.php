@@ -43,7 +43,7 @@
   </head>
 
   <x-navbar></x-navbar>
-  <div class="bg-[#0000] w-[90%] max-w-[1400px] rounded-3xl p-14 flex flex-col gap-10 text-white">
+  <div class="bg-[#27292a] w-[90%] max-w-[1400px] rounded-3xl p-14 flex flex-col gap-10 text-white">
     <div class="h-[500px] rounded-2xl overflow-hidden bg-center" 
          style="background-image: url({{ asset('uploads/events/' . $event->foto_event) }});">
       <div class="w-full h-full flex flex-row justify-center backdrop-blur-md bg-black/80">
