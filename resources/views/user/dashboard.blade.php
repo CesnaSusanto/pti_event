@@ -69,27 +69,42 @@
             </div>
         </div>
 
+        <!-- Tambahkan Swiper.js JavaScript -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            function startCountdown(eventId, openGateTime) {
+                const countdownElement = document.getElementById(`countdown-${eventId}`);
+    
+                function updateCountdown() {
+                    const now = new Date().getTime();
+                    const eventTime = new Date(openGateTime).getTime();
+                    const timeDifference = eventTime - now;
+    
+                    if (timeDifference <= 0) {
+                        countdownElement.innerHTML = "Sedang Berlangsung!";
+                        return;
+                    }
+    
+                    const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+    
+                    countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m`;
+                }
+    
+                updateCountdown();
+                setInterval(updateCountdown, 1000);
+            }
+    
+            @foreach($nearestEvents as $event)
+                startCountdown({{ $event->id }}, "{{ \Carbon\Carbon::parse($event->open_gate)->format('Y-m-d H:i:s') }}");
+            @endforeach
+        });
+    </script>
+    
+</body>
+
         <x-footer></x-footer>
     </x-guestlayout>
 
-    <!-- Tambahkan Swiper.js JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            var swiper = new Swiper(".swiper-container", {
-                loop: true, // Slide akan looping terus
-                autoplay: {
-                    delay: 3000, // Ganti slide setiap 3 detik
-                    disableOnInteraction: false, // Tetap autoplay meski user berinteraksi
-                },
-                spaceBetween: 20, // Beri jarak antar slide
-                centeredSlides: true, // Slide selalu berada di tengah
-                pagination: {
-                    el: ".swiper-pagination",
-                    clickable: true,
-                },
-            });
-        });
-    </script>
-</body>
+    
