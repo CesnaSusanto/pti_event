@@ -15,7 +15,7 @@ class DashboardController extends Controller
                             
         $nearestEvents = Event::where('tanggal_event', '>=', now())
                              ->orderBy('tanggal_event', 'asc')
-                             ->take(1)
+                             ->take(3)
                              ->get();
 
         // Untuk debug, tambahkan ini sementara
