@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ArtistController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EventMenuController;
 use App\Models\Event;
 
 // Route::get('/', function () {
@@ -13,7 +14,10 @@ use App\Models\Event;
 // });
 
 Route::get('/admin', [DashboardController::class, 'index'])->name('admin.dashboard');
-Route::get('/', [DashboardController::class, 'index'])->name('user.dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('user.dashboard');
+
+Route::get('/event', [EventMenuController::class, 'index'])->name('user.MenuEvent');
+
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -22,8 +26,8 @@ Route::middleware(['auth'])->group(function () {
 });
 
 // Route untuk admin
-Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('admin/dashboard', [HomeController::class, 'index'])->name('admin.dashboard');
+    Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('admin/dashboard', [HomeController::class, 'index'])->name('dashboard');
 
     // Route untuk Event CRUD
     Route::get('admin/events', [EventController::class, 'index'])->name('events.index');
