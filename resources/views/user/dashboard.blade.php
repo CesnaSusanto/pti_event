@@ -7,21 +7,30 @@
 
         <div class="bg-[#27292a] w-[90%] max-w-[1400px] rounded-3xl p-14 flex flex-col gap-14">
             <!-- Frame Abu-abu sebagai Container -->
-            <div class="relative bg-[#1f2122] rounded-2xl p-6 overflow-hidden">
+            <div class="relative bg-[#1f2122] rounded-2xl p-6">
                 <!-- Swiper Banner -->
-                <div class="swiper-container">
+                <div class="swiper-container w-[890px] mx-auto">
                     <div class="swiper-wrapper">
                         <!-- Slide 1 -->
-                        <div class="swiper-slide flex justify-center">
-                            <img src="assets/images/banner.jpeg" alt="" class="w-[95%] h-[600px] object-cover rounded-xl shadow-lg">
+                        <div class="swiper-slide">
+                            <div class="w-[890px] h-[500px] bg-black rounded-xl overflow-hidden">
+                                <img src="uploads/events/nct_127_poster.jpeg" alt="" 
+                                    class="w-full h-full object-contain">
+                            </div>
                         </div>
                         <!-- Slide 2 -->
-                        <div class="swiper-slide flex justify-center">
-                            <img src="assets/images/banner.jpeg" alt="" class="w-[95%] h-[600px] object-cover rounded-xl shadow-lg">
+                        <div class="swiper-slide">
+                            <div class="w-[890px] h-[500px] bg-black rounded-xl overflow-hidden">
+                                <img src="uploads/events/comfesticshow_poster.jpg" alt="" 
+                                    class="w-full h-full object-contain">
+                            </div>
                         </div>
                         <!-- Slide 3 -->
-                        <div class="swiper-slide flex justify-center">
-                            <img src="assets/images/banner.jpeg" alt="" class="w-[95%] h-[600px] object-cover rounded-xl shadow-lg">
+                        <div class="swiper-slide">
+                            <div class="w-[890px] h-[500px] bg-black rounded-xl overflow-hidden">
+                                <img src="assets/images/banner.jpeg" alt="" 
+                                    class="w-full h-full object-contain">
+                            </div>
                         </div>
                     </div>
 
@@ -75,20 +84,50 @@
     <!-- Tambahkan Swiper.js JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 
+    <style>
+        /* Custom styling untuk Swiper */
+        .swiper-container {
+            overflow: hidden !important;
+            border-radius: 0.75rem;
+        }
+        
+        .swiper-wrapper {
+            overflow: hidden !important;
+        }
+        
+        .swiper-slide {
+            width: 890px !important;
+        }
+        
+        .swiper-pagination-bullet {
+            background: #ffffff;
+            opacity: 0.5;
+        }
+        
+        .swiper-pagination-bullet-active {
+            background: #ec6090;
+            opacity: 1;
+        }
+    </style>
+
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             var swiper = new Swiper(".swiper-container", {
-                loop: true, // Slide akan looping terus
+                loop: true,
                 autoplay: {
-                    delay: 3000, // Ganti slide setiap 3 detik
-                    disableOnInteraction: false, // Tetap autoplay meski user berinteraksi
+                    delay: 3000,
+                    disableOnInteraction: false,
                 },
-                spaceBetween: 20, // Beri jarak antar slide
-                centeredSlides: true, // Slide selalu berada di tengah
+                slidesPerView: 1,
+                centeredSlides: true,
+                effect: "fade", // Menggunakan efek fade
+                fadeEffect: {
+                    crossFade: true
+                },
                 pagination: {
                     el: ".swiper-pagination",
                     clickable: true,
-                },
+                }
             });
         });
     </script>

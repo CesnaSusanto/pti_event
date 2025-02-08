@@ -13,14 +13,11 @@ use App\Models\Event;
 // });
 Route::get('/event/{id}', [EventController::class, 'show'])->name('event.details');
 
-<<<<<<< HEAD
-=======
 route::get('/details', function () {
     return view('user.EventDetails');
 });
 
 
->>>>>>> dc09b51d25492c00af438806f882448defbcc4ed
 Route::get('/admin', [DashboardController::class, 'index'])->name('dashboard');
 Route::get('/', [DashboardController::class, 'index'])->name('user.dashboard');
 

@@ -8,21 +8,30 @@
       .leaflet-control-container .leaflet-routing-container-hide {
         display: none;
       }
-      bg-[#27292a] w-[90%] max-w-[1400px] rounded-3xl p-14 flex flex-col gap-10 text-white.text-white {
-          --tw-text-opacity: 1;
-          color: #18181b;
-      }
-
       /* Mengubah warna teks instruksi rute */
-      .leaflet-routing-container .leaflet-routing-instructions {
-        color: #ff6347; /* Ganti dengan warna yang diinginkan */
-        font-size: 14px; /* Ukuran font teks rute */
+      .leaflet-routing-container {
+        color: #000000 !important;
       }
-
+      .leaflet-routing-container .leaflet-routing-instructions {
+        color: #000000 !important;
+      }
+      /* Mengubah warna teks detail rute */
+      .leaflet-routing-alt {
+        color: #000000 !important;
+      }
+      .leaflet-routing-alt h2 {
+        color: #000000 !important;
+      }
+      .leaflet-routing-alt h3 {
+        color: #000000 !important;
+      }
+      .leaflet-routing-alt table {
+        color: #000000 !important;
+      }
       /* Mengubah ukuran tabel deskripsi */
       #content-area {
-        font-size: 1.1rem; /* Mengubah ukuran font deskripsi */
-        max-width: 100%; /* Pastikan lebar tidak terbatas */
+        font-size: 1.1rem;
+        max-width: 100%;
       }
     </style>
   </head>
@@ -164,7 +173,6 @@
 
   <x-footer></x-footer>
 </x-guestlayout>
-
 
 
  
