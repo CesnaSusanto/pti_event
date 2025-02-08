@@ -69,36 +69,63 @@
             </div>
         </div>
 
-        <!-- Tambahkan Swiper.js JavaScript -->
+        <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                var swiper = new Swiper(".swiper-container", {
+                    loop: true, // Slide akan terus berulang
+                    autoplay: {
+                        delay: 4000, // Ganti ke 4 detik agar lebih terasa
+                        disableOnInteraction: false, // Tetap autoplay meskipun user berinteraksi
+                    },
+                    slidesPerView: 1, // Hanya 1 slide yang terlihat per waktu
+                    centeredSlides: true,
+                    effect: "slide", // Gunakan efek slide biasa dulu, jika ingin fade bisa diganti
+                    pagination: {
+                        el: ".swiper-pagination",
+                        clickable: true,
+                    },
+                    navigation: {
+                        nextEl: ".swiper-button-next",
+                        prevEl: ".swiper-button-prev",
+                    }
+                });
+            });
+        </script>
+        
+
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             function startCountdown(eventId, openGateTime) {
                 const countdownElement = document.getElementById(`countdown-${eventId}`);
-    
+
                 function updateCountdown() {
                     const now = new Date().getTime();
                     const eventTime = new Date(openGateTime).getTime();
                     const timeDifference = eventTime - now;
-    
+
                     if (timeDifference <= 0) {
                         countdownElement.innerHTML = "Sedang Berlangsung!";
                         return;
                     }
-    
+
                     const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
                     const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                     const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-    
+
                     countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m`;
                 }
-    
+
                 updateCountdown();
                 setInterval(updateCountdown, 1000);
             }
-    
-            @foreach($nearestEvents as $event)
-                startCountdown({{ $event->id }}, "{{ \Carbon\Carbon::parse($event->open_gate)->format('Y-m-d H:i:s') }}");
-            @endforeach
+
+            @if(isset($nearestEvents))
+                @foreach($nearestEvents as $event)
+                    startCountdown({{ $event->id }}, "{{ \Carbon\Carbon::parse($event->open_gate)->format('Y-m-d H:i:s') }}");
+                @endforeach
+            @endif
         });
     </script>
     
