@@ -14,7 +14,7 @@
                 <p class="text-white opacity-90">Manage your events and artists from here</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <!-- Event Management Card -->
                 <div class="bg-[#27292a] rounded-xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
                     <div class="h-32 bg-[#323435] flex items-center justify-center">
@@ -52,9 +52,22 @@
                                 <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
                             </svg>
                         </a>
-                        <br><br><br>
-                        <a href="{{ route('shows.index') }}" class="flex flex-row btn btn-primary text-white width-full">
-                            Go to Show List 
+                    </div>
+                </div>
+
+                <!-- Show List Management Card -->
+                <div class="bg-[#27292a] rounded-xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="h-32 bg-[#323435] flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                        </svg>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-2xl font-bold text-white mb-3">Show Management</h4>
+                        <p class="text-gray-300 mb-6">Manage show schedules, performances, and lineups. Control show details and timings.</p>
+                        <a href="{{ route('shows.index') }}" 
+                           class="inline-flex items-center px-6 py-3 bg-[#ec6090] text-white font-semibold rounded-lg hover:bg-[#3c3e3f] transition-all duration-300 shadow-md hover:shadow-lg">
+                            <span>Manage Shows</span>
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
                                 <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
                             </svg>

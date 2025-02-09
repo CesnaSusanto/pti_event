@@ -43,9 +43,9 @@
                         @csrf
                         <div class="card-body">
                             <div class="mb-3">
-                                <label for="event" class="form-label">Pilih Event</label>
+                                <label for="event" class="form-label">Select Event</label>
                                 <select name="id_event" id="event" class="form-select" required>
-                                    <option value="">-- Pilih Event --</option>
+                                    <option value="">-- Select Event --</option>
                                     @foreach($events as $event)
                                         <option value="{{ $event->id }}">{{ $event->nama_event }} ({{ date('d-m-Y', strtotime($event->tanggal_event)) }})</option>
                                     @endforeach
@@ -53,7 +53,7 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="artists" class="form-label">Pilih Artis</label>
+                                <label for="artists" class="form-label">Select Artist</label>
                                 <select name="id_artist[]" id="artists" class="form-select select2" multiple="multiple" required>
                                     @foreach($artists as $artist)
                                         <option value="{{ $artist->id }}">{{ $artist->nama_artist }}</option>
@@ -76,7 +76,7 @@
     <script>
         $(document).ready(function() {
             $('.select2').select2({
-                placeholder: "Pilih artis",
+                placeholder: "Select artist",
                 allowClear: true
             });
         });
