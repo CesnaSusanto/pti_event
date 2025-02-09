@@ -1,6 +1,3 @@
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
-
-<body>
     <x-guestlayout>
         <x-navbar></x-navbar>
 
@@ -8,17 +5,17 @@
             <!-- Frame Abu-abu sebagai Container -->
             <div class="relative bg-[#1f2122] rounded-2xl overflow-hidden h-[600px]">
                 <!-- Swiper Banner -->
-                <div class="swiper-container">
-                    <div class="swiper-wrapper">
+                <div class="swiper-container w-full h-full">
+                    <div class="swiper-wrapper w-full h-full">
                         @php
                             $imageFiles = File::files(public_path('assets/images'));
                         @endphp
 
                         @foreach($imageFiles as $file)
-                            <div class="w-full swiper-slide flex justify-center h-full " style="background-image: url({{ asset('assets/images/' . $file->getFilename()) }})">
+                            <div class="w-full swiper-slide flex justify-center duration-200" style="background-position:center; background-image: url({{ asset('assets/images/' . $file->getFilename()) }})">
                                 <img src="{{ asset('assets/images/' . $file->getFilename()) }}" 
                                      alt="{{ $file->getFilename() }}" 
-                                     class="w-full object-contain backdrop-blur-sm bg-black/20">
+                                     class="h-full w-full object-contain backdrop-blur-sm bg-black/20">
                             </div>
                         @endforeach
                     </div>
@@ -70,14 +67,14 @@
         <script>
             document.addEventListener("DOMContentLoaded", function () {
                 var swiper = new Swiper(".swiper-container", {
-                    loop: true, // Slide akan terus berulang
+                    loop: true,
                     autoplay: {
-                        delay: 4000, // Ganti ke 4 detik agar lebih terasa
-                        disableOnInteraction: false, // Tetap autoplay meskipun user berinteraksi
+                        delay: 4000, 
+                        disableOnInteraction: false, 
                     },
-                    slidesPerView: 1, // Hanya 1 slide yang terlihat per waktu
+                    slidesPerView: 1, 
                     centeredSlides: true,
-                    effect: "slide", // Gunakan efek slide biasa dulu, jika ingin fade bisa diganti
+                    effect: "slide", 
                     pagination: {
                         el: ".swiper-pagination",
                         clickable: true,
@@ -127,7 +124,7 @@
         });
     </script>
     
-</body>
+
 
         <x-footer></x-footer>
     </x-guestlayout>

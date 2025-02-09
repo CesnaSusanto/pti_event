@@ -3,9 +3,11 @@
 @props(['event'])
 
 <a href="{{ route('event.details', ['id' => $event->id]) }}" 
-   class="flex flex-row items-center gap-10 py-5 border-b-[1px] border-[#27292a] w-full hover:bg-[#333435] transition duration-300 p-4 rounded-lg">
+   class="flex flex-row items-center gap-10 border-b-[1px] border-[#27292a] w-full hover:bg-[#333435] transition duration-300  px-4 py-4">
 
-    <img src="{{ asset('uploads/events/' . $event->foto_event) }}" alt="{{ $event->nama_event }}" class="w-[200px] h-[150px] object-cover rounded-lg">
+    <div class="w-[200px] h-[150px]">
+    <img src="{{ asset('uploads/events/' . $event->foto_event) }}" alt="{{ $event->nama_event }}" class=" h-full w-full object-cover rounded-lg">
+    </div>
 
     <div class="flex flex-row items-center w-full">
         <div class="flex flex-col w-full gap-2 capitalize">

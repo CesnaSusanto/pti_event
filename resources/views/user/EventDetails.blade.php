@@ -59,7 +59,7 @@
         <button id="lokasi-btn" class="bg-[#ec6090] px-6 py-2 capitalize rounded-full hover:bg-[#ff84af] duration-200 cursor-pointer">Location</button>
       </div>
 
-      <div class="flex flex-row gap-6 w-full">
+      <div class="flex flex-row gap-6 w-full items-top">
         <div class="flex flex-col gap-6 w-full" id="content-area">
           <h2 class="text-2xl font-medium">Description</h2>
           <span class="text-neutral-300">{{ $event->deskripsi_event }}</span>
@@ -190,8 +190,10 @@
       updateContentArea(`
         <h2 class="text-2xl font-medium">Location</h2>
         <div id="map" style="height: 400px; border-radius: 10px; width: 100%; z-index: 1;"></div>
-        <button id="tampilRuteBtn" class="bg-[#ec6090] px-6 py-2 capitalize rounded-full hover:bg-[#ff84af] duration-200 mt-4 cursor-pointer">Tampilkan Rute</button>
-        <button id="hapusRuteBtn" class="bg-[#ec6090] px-6 py-2 capitalize rounded-full hover:bg-[#ff84af] duration-200 mt-4 cursor-pointer">Hapus Rute</button>
+        <div class="flex flex-row gap-4">
+        <button id="tampilRuteBtn" class="bg-[#ec6090] px-6 py-2 capitalize rounded-full hover:bg-[#ff84af] duration-200 mt-4 cursor-pointer">Show Route</button>
+        <button id="hapusRuteBtn" class="bg-[#ec6090] px-6 py-2 capitalize rounded-full hover:bg-[#ff84af] duration-200 mt-4 cursor-pointer">Hide Route</button>
+        </div>
       `);
       setTimeout(initMap, 100);
     });
@@ -253,4 +255,8 @@
   <x-footer></x-footer>
 </x-guestlayout>
 
+
+
+
+ 
 
