@@ -25,11 +25,15 @@ class EventController extends Controller
         // Kirim data event ke tampilan eventdetails.blade.php
         return view('user.EventDetails', compact('event'));
     }
-    public function index() {
-        $events = Event::orderBy('created_at', 'DESC')->paginate(5);
-        return view('admin.events.list', [
-            'events' => $events
-        ]);
+    public function index(Request $request)
+    {
+        $search = $request->search;
+
+        $events = Event::when($search, function($query, $search) {
+            return $query->where('nama_artist', 'like', '%'.$search.'%');
+        })->paginate(10);
+
+        return view('admin.events.list', compact('events'));
     }
 
     public function search(Request $request)
@@ -45,7 +49,7 @@ class EventController extends Controller
         }
 
         $events = DB::table('events')
-        ->orderBy('id', 'DESC')
+        ->orderBy('id', 'ASC')
         ->paginate(5);
         return view('admin.events.list', compact('events'));
     }

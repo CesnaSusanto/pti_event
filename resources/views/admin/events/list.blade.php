@@ -55,8 +55,28 @@
         .pagination .page-link:hover {
             background-color: #323435 !important;
         }
+        /* Styling untuk teks pagination */
+        .datatable-info, 
+        .datatable-info span,
+        .text-muted {
+            color: white !important;
+        }
+        
+        /* Styling untuk komponen pagination Bootstrap 5 */
+        .pagination {
+            --bs-pagination-color: white;
+        }
+        
+        div[aria-live="polite"] {
+            color: white !important;
+        }
+        
+        .pagination-info {
+            color: white !important;
+        }
     </style>
 </head>
+ 
 <body>
     <div class="bg-header py-3">
         <h3 class="text-white text-center">Manage Events</h3>
@@ -64,7 +84,7 @@
     <div class="container">
         <div class="row justify-content-center mt-4">
             <div class="col-md-10 d-flex justify-content-end">
-                <form method="GET" action="/artists/search">
+                <form method="GET" action="/events/search">
                     <div class="input-group" style="margin-right:5px;">
                         <div class="form-outline me-2" data-mdb-input-init>
                             <input class="form-control" name="search" placeholder="Search..." value="{{ request()->input('search') ? request()->input('search') : '' }}">
@@ -89,6 +109,7 @@
                     <div class="card-header">
                         <h3 class="text-white mb-0">Events</h3>
                     </div>
+ 
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table">
@@ -134,16 +155,20 @@
                         <div class="mt-4">
                             {!! $events->withQueryString()->links('pagination::bootstrap-5') !!}
                         </div>
+                        @if(request('search'))
+                            <div class="mt-3">
+                                <a href="{{ route('events.index') }}" class="btn btn-custom btn-sm">Clear Search</a>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
     <script>
-        function deleteArtist(id) {
-            if (confirm("Are you sure you want to delete this artist?")) {
-                document.getElementById("delete-artist-form-" + id).submit();
+        function deleteEvent(id) {
+            if (confirm("Are you sure you want to delete this event?")) {
+                document.getElementById("delete-event-form-" + id).submit();
             }
         }
     </script>

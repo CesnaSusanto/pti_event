@@ -18,7 +18,8 @@ Route::get('/event/{id}', [EventController::class, 'show'])->middleware(['auth',
 route::get('/details', function () {
     return view('user.EventDetails');
 });
-
+Route::get('/events/search', [EventController::class, 'search'])->name('events.search');
+Route::get('/artists/search', [ArtistController::class, 'search'])->name('artists.search');
 
 Route::get('/events', [EventController::class, 'showAllEvents'])->name('events.list');
 
