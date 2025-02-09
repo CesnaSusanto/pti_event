@@ -13,7 +13,7 @@
         <div class="bg-[#1f2122] flex flex-col w-full rounded-2xl p-10 gap-5">
             <div class="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-5 w-full" id="eventList">
                 @foreach ($events as $event)
-                    <x-eventcard :event="$event" data-city="{{ strtolower($event->kota_event) }}" class="event-card flex"/>
+                    <x-eventcard :event="$event" data-city="{{ strtolower($event->kota_event) }}" class="event-card"/>
                 @endforeach
             </div>
         </div>
@@ -25,11 +25,7 @@
             cityFilter.addEventListener('change', function() {
                 const selectedCity = cityFilter.value.toLowerCase();
                 document.querySelectorAll('.event-card').forEach(card => {
-                    if (selectedCity === 'all' || card.dataset.city === selectedCity) {
-                        card.style.display = 'flex'; // Sesuai dengan layout yang digunakan (bisa 'grid' jika pakai grid)
-                    } else {
-                        card.style.display = 'none';
-                    }
+                    card.style.display = (selectedCity === 'all' || card.dataset.city === selectedCity) ? 'block' : 'none';
                 });
             });
         });

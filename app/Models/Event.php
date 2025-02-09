@@ -22,6 +22,13 @@ class Event extends Model
         'latitude',
     ];
 
+    // Event memiliki banyak show (lineup)
+    public function shows()
+    {
+        return $this->hasMany(Show::class, 'id_event');
+    }
+
+    // Event memiliki banyak artist melalui tabel shows
     public function artists()
     {
         return $this->belongsToMany(Artist::class, 'shows', 'id_event', 'id_artist');

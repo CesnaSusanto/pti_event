@@ -12,18 +12,15 @@ class Show extends Model
         'id_artist',
     ];
 
-    public function event()
-    {
-        return $this->belongsTo(Event::class, 'id_event');
-    }
-
-    public function artists()
-    {
-        return $this->belongsToMany(Artist::class, 'shows', 'id_event', 'id_artist');
-    }
-
-    public function getNamaArtisAttribute()
-    {
-        return $this->artists->pluck('nama_artist')->implode(', ');
-    }
+     // Show terkait dengan satu event
+     public function event()
+     {
+         return $this->belongsTo(Event::class, 'id_event');
+     }
+ 
+     // Show terkait dengan satu artist
+     public function artist()
+     {
+         return $this->belongsTo(Artist::class, 'id_artist');
+     }
 }
