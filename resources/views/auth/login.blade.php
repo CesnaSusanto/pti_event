@@ -38,23 +38,26 @@
                     </label>
                 </div>
         
-                <div class="flex flex-col gap-4 items-center justify-end mt-4">
+                <div class="flex flex-col gap-4 items-center justify-end mt-6">
                     <x-primary-button class="w-full items-center justify-center py-4 ">
                         {{ __('Login') }}
                     </x-primary-button>
+                    <a href="/" class="text-stone-300 hover:text-pink-400 uppercase">cancel</a>
                     
-                    @if (Route::has('password.request'))
-                        <a class="underline text-sm text-stone-300 hover:text-pink-400 rounded-md focus:outline-none focus:ring-none" href="{{ route('password.request') }}">
-                            {{ __('Forgot your password?') }}
-                        </a>
-                    @endif
-        
+                    
                 </div>
             </div>
-            <div class="mt-6 text-center text-sm text-stone-300">
-                        Don't have an account? 
-                        <a href="/register" class="text-pink-400 hover:text-pink-300 font-medium">Regist Here</a>
-                    </div>
+            <div class="flex flex-col gap-4">
+                @if (Route::has('password.request'))
+                    <a class="underline text-sm text-stone-300 text-center hover:text-pink-400 rounded-md focus:outline-none focus:ring-none" href="{{ route('password.request') }}">
+                        {{ __('Forgot your password?') }}
+                    </a>
+                @endif
+                <div class="text-center text-sm text-stone-300">
+                    Don't have an account? 
+                    <a href="/register" class="text-pink-400 hover:text-pink-300 font-medium">Regist Here</a>
+                </div>
+            </div>
         </form>
         
     </div>

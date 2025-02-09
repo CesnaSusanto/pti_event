@@ -1,15 +1,15 @@
 <nav class="bg-[#1f2122] w-full h-32 px-8 sticky z-10 top-0 flex flex-row items-center justify-center">
     <div class="h-full w-[95%] max-w-[1400px] flex flex-row justify-between items-center">
-        <img src="{{ asset('assets/images/logo.png') }}" alt="logo" class="h-full object-contain">
+        <img src="{{ asset('assets/logo/logo.png') }}" alt="logo" class="h-full object-contain">
         <div class="flex gap-6 items-center text-[#9e9e9e] capitalize">
                 @if (Route::has('login'))
                                 @auth
                                     <a class="capitalize"
-                                        href="{{ url('/') }}">
+                                        href="{{ url('/') }}"class="hover:text-white">
                                         home
                                     </a>
                                     <a
-                                        href="{{ url('/events') }}">
+                                        href="{{ url('/events') }}"class="hover:text-white">
                                         event
                                     </a>
                                     <x-dropdown align="right" width="48">
@@ -45,12 +45,12 @@
                                 @else
                                     <a
                                         
-                                        href="/">
+                                        href="/"class="hover:text-white">
                                         home
                                     </a>
 
                                     <a
-                                        href="{{ url('/events') }}">
+                                        href="{{ url('/events') }}" class="hover:text-white">
                                         event
                                     </a>
 

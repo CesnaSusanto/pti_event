@@ -2,7 +2,7 @@
   <div id="footer-info" class="w-full flex flex-col items-center gap-7">
     <div id="footer-image" class="max-w-[300px] flex items-center">
       <img
-        src="assets/images/logo.png"
+        src="{{ asset('assets/logo/logo.png') }}"
         alt=""
         class="h-[150px] content-center"
       />
@@ -10,8 +10,8 @@
     <section
     id="menu"
     class="capitalize text-lg divide-x-2 divide-zinc-400  border-zinc-400 flex flex-row text-white">
-    <a href="" class="px-4 py-1 hover:bg-zinc-400 hover:underline">home</a>
-    <a href="" class="px-4 py-1 hover:bg-zinc-400 hover:underline">event</a>
+    <a href="/" class="px-4 py-1 hover:bg-zinc-400 hover:underline">home</a>
+    <a href="/events" class="px-4 py-1 hover:bg-zinc-400 hover:underline">event</a>
       <a href="" class="px-4 py-1 hover:bg-zinc-400 hover:underline">contact</a>
       <a href="" class="px-4 py-1 hover:bg-zinc-400 hover:underline">support</a>
     </section>
@@ -73,7 +73,7 @@
       </div>
     </section>
     <section class="capitalize py-1 text-white">
-      <a href="">copyright © team yang baik hati dan rajin menabung</a>
+      <a href="https://youtu.be/Oo1AR3f-jXI?si=tySOZenpttuEc8lw" target="new" value="">copyright © team selek</a>
     </section>
   </div>
 </footer>

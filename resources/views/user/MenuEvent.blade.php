@@ -18,7 +18,7 @@
             </div>
         </div>
     </div>
-
+    <x-footer></x-footer>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const cityFilter = document.getElementById('cityFilter');
