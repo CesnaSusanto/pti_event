@@ -54,9 +54,9 @@
     <div class="flex flex-col gap-8 px-4 w-full">
       <h1 class="text-3xl uppercase font-semibold tracking-wide">{{ $event->nama_event }}</h1>
       <div class="flex flex-row gap-5">
-        <button id="deskripsi-btn" class="bg-[#ec6090] px-6 py-2 capitalize rounded-full hover:bg-[#ff84af] duration-200 cursor-pointer">Deskripsi</button>
+        <button id="deskripsi-btn" class="bg-[#ec6090] px-6 py-2 capitalize rounded-full hover:bg-[#ff84af] duration-200 cursor-pointer">Description</button>
         <button id="lineup-btn" class="bg-[#ec6090] px-6 py-2 capitalize rounded-full hover:bg-[#ff84af] duration-200 cursor-pointer">Line Up</button>
-        <button id="lokasi-btn" class="bg-[#ec6090] px-6 py-2 capitalize rounded-full hover:bg-[#ff84af] duration-200 cursor-pointer">Lokasi</button>
+        <button id="lokasi-btn" class="bg-[#ec6090] px-6 py-2 capitalize rounded-full hover:bg-[#ff84af] duration-200 cursor-pointer">Location</button>
       </div>
 
       <div class="flex flex-row gap-6 w-full">
@@ -157,26 +157,38 @@
     }
 
     deskripsiBtn.addEventListener('click', () => {
-      updateContentArea(`<h2 class="text-2xl font-medium">Deskripsi</h2><span class="text-neutral-300">{{ $event->deskripsi_event }}</span>`);
+      updateContentArea(`<h2 class="text-2xl font-medium">Description</h2><span class="text-neutral-300">{{ $event->deskripsi_event }}</span>`);
     });
 
     lineupBtn.addEventListener('click', () => {
-      updateContentArea(`<h2 class="text-2xl font-medium">Line Up</h2>
-      <div class="bg-[#1f2122] p-4 rounded-xl inline-flex flex-row  gap-4 items-center w-2/4">
-            <img src="{{ asset('uploads/events/' . $event->foto_event) }}" alt="" srcset="" class="h-20 w-20 rounded-lg bg-pink-400 object-contain">
-            <div class="w-full flex items-center justify-center">
-              <span class="uppercase text-2xl w-full  line-clamp-2">
-                bokuga mitakatta aozora
-            </span>
-            </div>
-          </div>`);
+        let lineupHTML = `<h2 class="text-2xl font-medium mb-4">Line Up</h2>
+                          <div class="flex flex-col gap-3">`;
+
+        @foreach($event->shows as $show)
+            lineupHTML += `
+                <div class="bg-[#1f2122] p-3 rounded-xl flex items-center gap-4 shadow-md max-w-md w-full">
+                    <!-- Foto Artis -->
+                    <img src="{{ asset('uploads/artists/' . $show->artist->foto_artist) }}" 
+                         alt="{{ $show->artist->nama_artist }}" 
+                         class="h-16 w-16 rounded-full object-cover">
+
+                    <!-- Nama Artis -->
+                    <span class="text-md font-semibold text-white">
+                        {{ $show->artist->nama_artist }}
+                    </span>
+                </div>`;
+        @endforeach
+
+        lineupHTML += `</div>`;
+
+        updateContentArea(lineupHTML);
     });
 
     
 
     lokasiBtn.addEventListener('click', () => {
       updateContentArea(`
-        <h2 class="text-2xl font-medium">Lokasi</h2>
+        <h2 class="text-2xl font-medium">Location</h2>
         <div id="map" style="height: 400px; border-radius: 10px; width: 100%; z-index: 1;"></div>
         <button id="tampilRuteBtn" class="bg-[#ec6090] px-6 py-2 capitalize rounded-full hover:bg-[#ff84af] duration-200 mt-4 cursor-pointer">Tampilkan Rute</button>
         <button id="hapusRuteBtn" class="bg-[#ec6090] px-6 py-2 capitalize rounded-full hover:bg-[#ff84af] duration-200 mt-4 cursor-pointer">Hapus Rute</button>

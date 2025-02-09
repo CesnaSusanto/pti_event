@@ -17,23 +17,20 @@ class EventController extends Controller
 
     return view('user.MenuEvent', compact('events'));
 }
-        public function show($id)
-    {
-        // Ambil event berdasarkan ID
-        $event = Event::findOrFail($id);
 
-        // Kirim data event ke tampilan eventdetails.blade.php
+    public function show($id)
+    {
+        // Ambil event berdasarkan ID, serta join dengan shows dan artists
+        $event = Event::with(['shows.artist'])->findOrFail($id);
+    
         return view('user.EventDetails', compact('event'));
     }
-    public function index(Request $request)
-    {
-        $search = $request->search;
-
-        $events = Event::when($search, function($query, $search) {
-            return $query->where('nama_artist', 'like', '%'.$search.'%');
-        })->paginate(10);
-
-        return view('admin.events.list', compact('events'));
+    
+    public function index() {
+        $events = Event::orderBy('created_at', 'DESC')->paginate(5);
+        return view('admin.events.list', [
+            'events' => $events
+        ]);
     }
 
     public function search(Request $request)
