@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Validator;
 class ArtistController extends Controller
 {
     public function index() {
-        $artists = Artist::orderBy('created_at', 'DESC')->paginate(5);
+        $artists = Artist::orderBy('created_at', 'DESC')->paginate(10);
         return view('admin.artists.list', [
             'artists' => $artists
         ]);

@@ -44,7 +44,7 @@
 
             <div class="mt-6 flex justify-end">
                 <x-secondary-button x-on:click="$dispatch('close')" 
-                    class="bg-gray-600 hover:bg-gray-700 text-white transition duration-300 ease-in-out">
+                    class="bg-gray-600 hover:bg-gray-700 text-black hover:text-white transition duration-300 ease-in-out">
                     {{ __('Cancel') }}
                 </x-secondary-button>
 

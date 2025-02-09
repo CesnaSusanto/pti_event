@@ -80,6 +80,33 @@
             display: flex;
             gap: 0.5rem;
         }
+        .pagination .page-link {
+            background-color: #27292a !important;
+            border-color: #323435 !important;
+            color: white !important;
+        }
+        .pagination .page-link:hover {
+            background-color: #323435 !important;
+        }
+                /* Styling untuk teks pagination */
+                .datatable-info, 
+        .datatable-info span,
+        .text-muted {
+            color: white !important;
+        }
+        
+        /* Styling untuk komponen pagination Bootstrap 5 */
+        .pagination {
+            --bs-pagination-color: white;
+        }
+        
+        div[aria-live="polite"] {
+            color: white !important;
+        }
+        
+        .pagination-info {
+            color: white !important;
+        }
     </style>
 </head>
 <body>
@@ -159,7 +186,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="mt-4">
+                    <div class="mt-4 ">
                         {!! $shows->links('pagination::bootstrap-5') !!}
                     </div>
                 </div>

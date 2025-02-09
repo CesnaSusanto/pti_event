@@ -97,15 +97,15 @@
                         @csrf
                         <div class="card-body">
                             <div class="mb-3">
-                                <label class="form-label">Nama Artist</label>
-                                <input value="{{ old('nama_artist') }}" type="text" class="form-control @error('nama_artist') is-invalid @enderror" placeholder="Masukkan nama artist" name="nama_artist">
+                                <label class="form-label">Artist Name</label>
+                                <input value="{{ old('nama_artist') }}" type="text" class="form-control @error('nama_artist') is-invalid @enderror" placeholder="Add Artist Name" name="nama_artist">
                                 @error('nama_artist')
                                 <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
 
                             <div class="mb-3">
-                                <label class="form-label">Tipe Artist</label>
+                                <label class="form-label">Artist Type</label>
                                 <select class="form-select @error('tipe_artist') is-invalid @enderror" name="tipe_artist">
                                     <option value="solo" {{ old('tipe_artist') == 'solo' ? 'selected' : '' }}>Solo</option>
                                     <option value="duo" {{ old('tipe_artist') == 'duo' ? 'selected' : '' }}>Duo</option>
@@ -117,15 +117,15 @@
                             </div>
 
                             <div class="mb-3">
-                                <label class="form-label">Deskripsi</label>
-                                <textarea class="form-control @error('deskripsi') is-invalid @enderror" name="deskripsi" rows="4" placeholder="Masukkan deskripsi artist">{{ old('deskripsi') }}</textarea>
+                                <label class="form-label">Description</label>
+                                <textarea class="form-control @error('deskripsi') is-invalid @enderror" name="deskripsi" rows="4" placeholder="Add Artist Description">{{ old('deskripsi') }}</textarea>
                                 @error('deskripsi')
                                 <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
 
                             <div class="mb-3">
-                                <label class="form-label">Foto Artist</label>
+                                <label class="form-label">Select Picture</label>
                                 <input type="file" class="form-control @error('foto_artist') is-invalid @enderror" name="foto_artist">
                                 @error('foto_artist')
                                 <div class="invalid-feedback">{{ $message }}</div>

@@ -67,7 +67,7 @@
                                 <input type="hidden" name="id_event" value="{{ $event->id }}">
                             </div>
                             <div class="mb-3">
-                                <label for="id_artist" class="form-label">Pilih Artis</label>
+                                <label for="id_artist" class="form-label">Select Artists</label>
                                 <select name="id_artist[]" id="id_artist" class="form-select" multiple="multiple" required>
                                     @foreach($artists as $artist)
                                         <option value="{{ $artist->id }}" {{ in_array($artist->id, $selectedArtists) ? 'selected' : '' }}>{{ $artist->nama_artist }}</option>

@@ -103,7 +103,7 @@
                         @csrf
                         <div class="card-body">
                             <div class="mb-3">
-                                <label class="form-label">Nama Artist</label>
+                                <label class="form-label">Artist Name</label>
                                 <input value="{{ old('nama_artist', $artist->nama_artist) }}" type="text" class="form-control @error('nama_artist') is-invalid @enderror" placeholder="Masukkan nama artist" name="nama_artist">
                                 @error('nama_artist')
                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -111,7 +111,7 @@
                             </div>
 
                             <div class="mb-3">
-                                <label class="form-label">Tipe Artist</label>
+                                <label class="form-label">Artist Type</label>
                                 <select class="form-select @error('tipe_artist') is-invalid @enderror" name="tipe_artist">
                                     <option value="solo" {{ old('tipe_artist', $artist->tipe_artist) == 'solo' ? 'selected' : '' }}>Solo</option>
                                     <option value="duo" {{ old('tipe_artist', $artist->tipe_artist) == 'duo' ? 'selected' : '' }}>Duo</option>
@@ -123,7 +123,7 @@
                             </div>
 
                             <div class="mb-3">
-                                <label class="form-label">Deskripsi</label>
+                                <label class="form-label">Description</label>
                                 <textarea class="form-control @error('deskripsi') is-invalid @enderror" name="deskripsi" rows="4" placeholder="Masukkan deskripsi artist">{{ old('deskripsi', $artist->deskripsi) }}</textarea>
                                 @error('deskripsi')
                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -131,7 +131,7 @@
                             </div>
 
                             <div class="mb-3">
-                                <label class="form-label">Foto Artist</label>
+                                <label class="form-label">Select Picture</label>
                                 <input type="file" class="form-control @error('foto_artist') is-invalid @enderror" name="foto_artist">
                                 @if ($artist->foto_artist != "")
                                 <img src="{{ asset('uploads/artists/'.$artist->foto_artist) }}" alt="Preview" class="preview-image">
