@@ -89,7 +89,7 @@
 
     <div class="container">
         <div class="d-flex justify-content-end mb-4">
-            <a href="{{ route('shows.create') }}" class="btn btn-custom">Tambah Show</a>
+            <a href="{{ route('shows.create') }}" class="btn btn-custom">Add Show</a>
             <a href="{{ route('dashboard') }}" class="btn btn-custom ms-2">Go Back</a>
         </div>
         <div class="row d-flex justify-content-center">
@@ -109,13 +109,13 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Foto</th>
-                                    <th>Nama Event</th>
-                                    <th>Tanggal</th>
+                                    <th>Photo</th>
+                                    <th>Event Name</th>
+                                    <th>Date</th>
                                     <th>Open Gate</th>
-                                    <th>Kota</th>
-                                    <th>Deskripsi</th>
-                                    <th>Artis</th>
+                                    <th>City</th>
+                                    <th>Description</th>
+                                    <th>Artist</th>
                                     <th>Location</th>
                                     <th>Action</th>
                                 </tr>
