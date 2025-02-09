@@ -103,10 +103,18 @@
 
             </div>
           </div>
+          <!-- API CUACA (Open-Meteo) -->
+          <div class="bg-[#1f2122] rounded-xl flex flex-col gap-4 p-6 mt-6">
+            <h3 class="w-full text-white font-semibold tracking-wide">🌤 Cuaca Saat Ini</h3>
+            <div id="weather-openmeteo" class="flex flex-row items-center gap-4 text-neutral-400">
+                <span class="text-white font-medium">Memuat...</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
+
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
   <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
@@ -247,8 +255,83 @@
       }
     }
 
-    
+  
   </script>
+
+  {{-- API CUACA SECARA REAL-TIME MENGGUNAKAN OPEN-METEO --}}
+  <script>
+    // Konversi kode cuaca WMO ke kondisi cuaca di Indonesia
+    function getWeatherCondition(code) {
+        const weatherConditions = {
+            0: "Cerah",
+            1: "Cerah Berawan",
+            2: "Berawan Sebagian",
+            3: "Mendung",
+            45: "Berkabut",
+            48: "Kabut Tebal",
+            51: "Gerimis Ringan",
+            53: "Gerimis Sedang",
+            55: "Gerimis Lebat",
+            61: "Hujan Ringan",
+            63: "Hujan Sedang",
+            65: "Hujan Lebat",
+            80: "Hujan Lokal Ringan",
+            81: "Hujan Lokal Sedang",
+            82: "Hujan Badai",
+            95: "Badai Petir Ringan",
+            96: "Badai Petir + Hujan Es Ringan",
+            99: "Badai Petir + Hujan Es Berat"
+        };
+        return weatherConditions[code] || "Tidak Diketahui";
+    }
+
+    // Fungsi untuk mendapatkan cuaca dari Open-Meteo
+    async function getWeatherOpenMeteo(lat, lon) {
+        const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`;
+
+        async function fetchWeather() {
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+
+                if (data && data.current_weather) {
+                    const temperature = data.current_weather.temperature;
+                    const weatherCode = data.current_weather.weathercode;
+                    const weatherDescription = getWeatherCondition(weatherCode);
+
+                    document.getElementById("weather-openmeteo").innerHTML = `
+                        <span class="text-white font-medium">🌡 ${temperature}°C</span>
+                        <span class="text-white">| 🌥 ${weatherDescription}</span>
+                    `;
+                } else {
+                    document.getElementById("weather-openmeteo").innerHTML = "Data tidak tersedia";
+                }
+            } catch (error) {
+                console.error("Error fetching weather from Open-Meteo:", error);
+                document.getElementById("weather-openmeteo").innerHTML = "Gagal memuat cuaca";
+            }
+        }
+
+        // Jalankan pertama kali saat halaman dimuat
+        fetchWeather();
+
+      // Update otomatis setiap 3 menit (180000 ms)
+      setInterval(fetchWeather, 180000);
+    }
+
+    // Panggil fungsi saat halaman dimuat
+    document.addEventListener("DOMContentLoaded", function () {
+        const eventLat = {{ $event->latitude }};
+        const eventLon = {{ $event->longitude }};
+
+        if (eventLat && eventLon) {
+            getWeatherOpenMeteo(eventLat, eventLon);
+        } else {
+            document.getElementById("weather-openmeteo").innerHTML = "Lokasi tidak tersedia";
+        }
+    });
+</script>
+
 
   <x-footer></x-footer>
 </x-guestlayout>

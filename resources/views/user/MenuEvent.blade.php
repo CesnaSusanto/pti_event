@@ -30,4 +30,5 @@
             });
         });
     </script>
+<x-footer></x-footer>
 </x-guestlayout>
